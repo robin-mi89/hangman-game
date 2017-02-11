@@ -3,7 +3,7 @@
     <head>
         <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
         <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
-        <script src="assets/javascript/game.js"></script> 
+        
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Index</title>
@@ -13,15 +13,25 @@
     <div class = "background-area">
      
        <header>
-           <h1> The Hangman Game </h1>
+            <div class = "container">
+           <h1 style = "text-align: center"> The Hangman Game </h1>
+            </div>
         </header>
 
         <div class = "container">
-            <h2>Try and guess a word</h2>
-            <p id = "guess-word"></p>
-            <p id = "guessed-letters"></p>
-            <p id = "remaining"></p>
-            <h2 id = "win-lose"></h2>
+
+            <div class = "row">
+                <div class = "col-sm-6">
+                </div>
+                <div class = "col-sm-6">
+                    <h2 style = "text-align: center">Try and guess a word</h2>
+                    <h3 id = "guess-word" style = "text-align: center"></h3>
+                    <h3 id = "guessed-letters" style = "text-align: center"></h3>
+                    <h3 id = "remaining" style = "text-align: center"></h3>
+                    <h2 id = "win-lose" style = "text-align: center"></h2>
+                </div>
+            
+            </div>
         </div>
 
 
@@ -30,6 +40,6 @@
         <footer class="navbar-fixed-bottom">
             <p class= "text-muted text-center"> © Copyright 2017 Robin Mi</p>
         </footer>
-
+        <script src="assets/javascript/game.js"></script> 
     </body>
 </html>
