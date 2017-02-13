@@ -1,4 +1,4 @@
-var wordBank = ["eleven", "waffles", "sheriff", "demogorgon", "mike", "dustin", "lucas"];
+var wordBank = ["eleven", "waffles", "sheriff", "demogorgon", "mike", "dustin", "lucas", "joyce", "nancy", "jonathan", "upsidedown", "sensory", "deprivation", "psychic", "retro"];
 var originalWord = "";
 var word = [];
 var guess = [];
@@ -9,10 +9,14 @@ var losses = 0;
 var victorySound = new Audio("../sounds/victory.mp3");
 var mainImage = document.getElementById("mainImage");
 mainImage.src = "assets/images/stranger-game.gif"
-
+var locked = true;
 
 document.onkeyup = function(event) {
         // Determines which key was pressed
+        if (locked)
+        {
+            return;
+        }
         var userGuess = event.key.toLowerCase();
         var isInWord = false;
         console.log("You guessed: " + userGuess);
@@ -97,6 +101,7 @@ function win()
      wins++
      document.getElementById("winCount").textContent = "Wins: " + wins;
      console.log("You Win!");
+     locked = true;
 }
 
 function lose()
@@ -106,7 +111,7 @@ function lose()
     mainImage.src = 'assets/images/demogorgon.jpg';
     losses++
     document.getElementById("lossCount").textContent = "Losses: " + losses;
-    
+    locked = true;
     console.log("You Lose!");
 }
 
@@ -135,6 +140,7 @@ function reset()
     {
         guess[i] = "_";
     }
+    locked = false;
 }
 
 $("#btnStart").on("click", function() {
