@@ -1,14 +1,16 @@
-var wordBank = ["snake", "mario", "link", "cloud", "raiden", "pikachu"];
-var originalWord;
-var word;
-var guess;
-var numGuessesRemaining;
-var guessedLetters;
-var shotRicochet = new Audio('./assets/sounds/shotRicochet');
+var wordBank = ["eleven", "waffles", "sheriff", "demogorgon", "mike", "dustin", "lucas"];
+var originalWord = "";
+var word = [];
+var guess = [];
+var numGuessesRemaining = 12;
+var guessedLetters = [];
+var wins = 0;
+var losses = 0;
+var victorySound = new Audio("../sounds/victory.mp3");
+var mainImage = document.getElementById("mainImage");
+mainImage.src = "assets/images/stranger-game.gif"
 
 
-reset();
-update();
 document.onkeyup = function(event) {
         // Determines which key was pressed
         var userGuess = event.key.toLowerCase();
@@ -57,49 +59,85 @@ document.onkeyup = function(event) {
 
 function update()
 {
-        document.getElementById("guess-word").textContent = guess.toString();
+        document.getElementById("guess-word").textContent = guess.join(" ");
         document.getElementById("remaining").textContent = "You have " + numGuessesRemaining + " guesses remaining."
-        document.getElementById("guessed-letters").textContent = guessedLetters.toString();
+        document.getElementById("guessed-letters").textContent = "You have guessed: " + guessedLetters.toString();
 
 
         console.log(guess.toString());
         console.log("You have " + numGuessesRemaining + " guesses remaining.");
         console.log("Previously guessed letters " + guessedLetters.toString());
+        
+
+        if (numGuessesRemaining < 3)
+        {
+            mainImage.src = "assets/images/less3.png";
+        }
+        else if (numGuessesRemaining < 6)
+        {
+            mainImage.src = "assets/images/less6.jpg";
+        }
+        else if (numGuessesRemaining < 9)
+        {
+            mainImage.src = "assets/images/less9.gif";
+        }
+        else if (numGuessesRemaining <= 12)
+        {
+            mainImage.src = "assets/images/begin.jpg";
+        }
+        
 }
 
 function win()
 {
-     document.getElementById("win-lose").textContent = "You Win!";
-     if (confirm("You Win! The word was: " + originalWord.toString() + ". Would you like to try again?"))
-     {
-         reset();
-         update();
-     }
+     clear()
+     document.getElementById("victorySound").play();
+     document.getElementById("win-lose").textContent = "You Win! Insert Another Quarter to Play Again!";
+     mainImage.src = 'assets/images/kids-group.jpg';
+     wins++
+     document.getElementById("winCount").textContent = "Wins: " + wins;
      console.log("You Win!");
 }
 
 function lose()
 {
-    document.getElementById("win-lose").textContent = "You Lose!";
-         if (confirm("You lost! The word was: " + originalWord.toString() + ". Would you like to try again?"))
-     {
-         reset();
-         update();
-     }
-     console.log("You Win!");
+    clear();
+    document.getElementById("win-lose").textContent = "You Lose! Insert Another Quarter to Play Again!";
+    mainImage.src = 'assets/images/demogorgon.jpg';
+    losses++
+    document.getElementById("lossCount").textContent = "Losses: " + losses;
+    
     console.log("You Lose!");
+}
+
+function clear()
+{
+    document.getElementById("quarterPrompt").textContent = "";
+    document.getElementById("guess-word").textContent ="";
+    document.getElementById("remaining").textContent = ""
+    document.getElementById("guessed-letters").textContent = "";
 }
 
 function reset()
 {
+
     originalWord = wordBank[Math.floor(Math.random() * wordBank.length)]
     word = originalWord.split('');
     guess = new Array(word.length);
     numGuessesRemaining = 12;
     guessedLetters = new Array(0);
     document.getElementById("win-lose").textContent = "";
+    document.getElementById("quarterPrompt").textContent = "Try to Guess the Word";
+    mainImage.src = 'assets/images/stranger-game.gif';
+   
+    
     for (var i = 0; i < guess.length; i++)
     {
         guess[i] = "_";
     }
 }
+
+$("#btnStart").on("click", function() {
+	reset();
+    update();
+})

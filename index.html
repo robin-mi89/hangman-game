@@ -3,43 +3,63 @@
     <head>
         <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
         <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
-        
+        <link rel="stylesheet" type="text/css" href="assets/css/hangman-style.css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet"> 
         <meta charset="UTF-8">
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Index</title>
+        <title>Hangman Game</title>
     </head>
     <body>
 
-    <div class = "background-area">
-     
-       <header>
-            <div class = "container">
-           <h1 style = "text-align: center"> The Hangman Game </h1>
-            </div>
-        </header>
-
+    
+    <header>
         <div class = "container">
-
-            <div class = "row">
-                <div class = "col-sm-6">
-                </div>
-                <div class = "col-sm-6">
-                    <h2 style = "text-align: center">Try and guess a word</h2>
-                    <h3 id = "guess-word" style = "text-align: center"></h3>
-                    <h3 id = "guessed-letters" style = "text-align: center"></h3>
-                    <h3 id = "remaining" style = "text-align: center"></h3>
-                    <h2 id = "win-lose" style = "text-align: center"></h2>
-                </div>
-            
-            </div>
+        <img class ="img-responsive" src = "assets/images/hangman-game.png">
+        <!--<h1 style = "text-align: center"> HANGMAN GAM<span class = ".large-letter">E</span> </h1>-->
         </div>
+    </header>
 
+    <div class = "container">
 
+        <div class = "row">
+            <div class = "col-sm-6" id = "imgColumn">
+                <img class ="img-responsive" id = "mainImage" src = "" style ="margin-top: 5%">
+                <div class = "row">
+                    <div class = "col-sm-6">
+                        <h1 id = "winCount">Wins: 0</h1>
+                    </div>
+                    <div class = "col-sm-6">
+                        <h1 id = "lossCount">Losses: 0</h1>
+                    </div>
+                </div>
+            </div>
+            <div class = "col-sm-6">
+                <h2 style = "text-align: center" id = "quarterPrompt">Insert Quarter to Play</h2>
+                <h1 id = "guess-word" style = "text-align: center"></h1>
+                <h3 id = "guessed-letters" style = "text-align: center"></h3>
+                <h3 id = "remaining" style = "text-align: center"></h3>
+                <h2 id = "win-lose" style = "text-align: center"></h2>
+                
+                <button class="btn btn-default" id = "btnStart" style = "padding: 0; border: none; margin-left: 40%">
+                    <img class ="img-responsive" src="assets/images/arcade-coin-button.jpg" style = "margin: auto; width: 8em">
+                </button>
+                
+                
+            </div>
+        
+        </div>
     </div>
 
-        <footer class="navbar-fixed-bottom">
+
+        <!--<footer class="navbar-fixed-bottom">
             <p class= "text-muted text-center"> © Copyright 2017 Robin Mi</p>
-        </footer>
+        </footer>-->
+
+        <audio
+        src="assets/sounds/victory.mp3" id="victorySound">
+        Your browser does not support the <code>audio</code> element.
+        </audio>
         <script src="assets/javascript/game.js"></script> 
     </body>
 </html>

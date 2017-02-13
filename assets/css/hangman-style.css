@@ -1,0 +1,27 @@
+
+
+.container {
+    background-color: black;
+    /*border-style: solid;
+    border-width: 2px;
+    border-color: #d91f26;*/
+}
+
+h1, h2, h3, h4, h5, p{
+    /*border-style: solid;
+    border-width: 1px;
+    border-color: #d91f26;*/
+    font-family: 'Roboto Slab', serif;
+    text-shadow: 2px 0 0 #d91f26, -2px 0 0 #d91f26, 0 2px 0 #d91f26, 0 -2px 0 #d91f26, 1px 1px #d91f26, -1px -1px 0 #d91f26, 1px -1px 0 #d91f26, -1px 1px 0 #d91f26;
+    color: black !important;
+}
+
+h1{
+    font-size: 4em;
+}
+
+
+body{
+    background-color: black;
+    /*background-image: url("../images/hangman-game.png")*/
+}
